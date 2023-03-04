@@ -1,5 +1,9 @@
 <?php
 include_once('php/ponto.php');
+
+if (!$_SESSION['matricula']) {
+    header("Location: login.php");
+  } 
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +21,14 @@ include_once('php/ponto.php');
 </head>
 
 <body>
+
+    <div class="pull-right">
+    <form method="POST"  action="sair.php">
+        <input type="submit" class="btn btn-default btn-red" name="Sair" value="Sair" >
+    </form>
+    </div>
+
+
     <div class="clock-container">
             <div class="clock">
                 <div class="hand hour" id="hour"></div>
