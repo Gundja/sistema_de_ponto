@@ -2,33 +2,6 @@
 session_start();
 include_once('db.php');
 
-$query = "SELECT * FROM colaborador";
-$users = $conn->query($query);
-
-
-if(isset($_SESSION['matricula'])){
-    $matricula = $_SESSION['matricula'];
-    $nivel = "SELECT * FROM colaborador WHERE matricula= '".$matricula."' ";
-    $busca = mysqli_query($conn , $nivel);
-
-    $usuarios = mysqli_fetch_assoc($busca);
-    $nome = $usuarios['nome'];
-    $matricula = $usuarios['matricula'];
-    $entrada = $usuarios['entrada'];
-    $saida = $usuarios['saida'];
-    $data_criacao = $usuarios['data_criacao'];
-    $data_atualizacao = $usuarios['data_atualizacao'];
-    $deletado_em = $usuarios['deletado_em'];
-    $nivel_acesso = $usuarios['nivel_acesso'];
-    if ($nivel_acesso == 1) {
-        $nivel_acesso == 'colaborador';
-    }
-
-  } else {
-    header("Location: ../index.html");
-  }
-
-
 ?>
 
 <!DOCTYPE html>
