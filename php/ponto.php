@@ -1,14 +1,15 @@
 <?php
 session_start();
-
+date_default_timezone_set('America/Sao_Paulo');
     include_once('db.php');
     $matricula = $_SESSION['matricula'];
 
     if(isset($_POST['marcar'])){
         $tipo = $_POST['tipo'];
         $data_marcacao = date('Y/m/d');
+        $ponto_marcacao = date('H:i:s');
         
-       $sql = "INSERT INTO ponto (fk_colaborador, tipo, data_marcacao) VALUES ('".$matricula."', '".$tipo."', '".$data_marcacao."')";
+       $sql = "INSERT INTO ponto (fk_colaborador, tipo, data_marcacao, ponto) VALUES ('".$matricula."', '".$tipo."', '".$data_marcacao."', '".$ponto_marcacao."')";
 
         if (mysqli_query($conn, $sql)) {
                 echo "Dados inseridos com sucesso";

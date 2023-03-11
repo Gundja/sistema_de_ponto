@@ -1,0 +1,40 @@
+body{
+    background-color: #2d272f;
+    font-family: 'Bubbler One', sans-serif;
+}
+
+.app{
+    display: grid;
+    place-items: center;
+    margin-top: 30vh;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.parentDate{
+    display: grid;
+    place-items: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+    background: #2d272f;
+    box-shadow: inset 20px 20px 36px #262128, 
+                inset -20px -20px 36px #342d36;
+}
+.parentClock{
+    display: grid;
+    place-items: center;
+    width: 180px;
+    height: 90px;
+    border-radius: 81px;
+    background: linear-gradient(145deg, #29232a, #302a32);
+    box-shadow:  20px 20px 36px #262128, 
+                -20px -20px 36px #342d36;
+}
+.date{
+    color: white;
+    font-size: x-large;
+}
+.clock{
+    color: white;
+    font-size: xx-large;
+}

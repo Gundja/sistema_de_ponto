@@ -27,6 +27,8 @@ $colaboradores = array();
 while ($row = mysqli_fetch_array($resultado)) {
   $colaboradores[] = $row;
 }
+
+
 $key_colabora = count($colaboradores);
 
 //ADMINISTRADOR

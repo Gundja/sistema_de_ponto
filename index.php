@@ -32,19 +32,15 @@ if (!$_SESSION['matricula']) {
         <span class="logo-mini">GundjaTech</span>
         <span class="logo-lg">GundjaTech</span>
       </a>
-
       <nav class="navbar navbar-static-top" role="navigation">
       
-
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="dist/img/casi.png" class="user-image" alt="User Image">
+                <img src="dist/img/casi.jpeg" class="user-image" alt="User Image">
                 <span class="hidden-xs"><?php echo $nome_adm; ?>  </span>
               </a>
-
-             
                   <div class="pull-right">
                     <form method="POST"  action="sair.php">
                         <input type="submit" class="btn btn-default btn-red" name="Sair" value="Sair" >
@@ -68,7 +64,7 @@ if (!$_SESSION['matricula']) {
               <?php echo $nome_adm; ?>  
             </p>
 
-            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
           </div>
         </div>
 
@@ -101,11 +97,6 @@ if (!$_SESSION['matricula']) {
             <div class="box">
               <div class="box-header">
                 <h3 class="box-title">Lista de Colaboradores</h3>
-                <div class="right" style="float: right;">
-                  <a href="">
-                    <img src="dist/img/csv.png" alt="geral planilha" style="width: 25px;">
-                  </a>
-                </div>    
               </div>
 
               <div class="box-body no-padding">
@@ -127,7 +118,7 @@ if (!$_SESSION['matricula']) {
                       $matricula = $cliente['matricula'];
                       $entrada = str_pad($cliente['entrada'], 4, "0", STR_PAD_LEFT);
                       $saida = str_pad($cliente['saida'], 4, "0", STR_PAD_LEFT);
-                      $periodo = substr($entrada, 0,2).":".substr($entrada, 2,2)." às ".substr($saida, 0,2).":".substr($saida, 2,2);
+                      $periodo = substr($entrada, 0,2)."".substr($entrada, 2,3)." às ".substr($saida, 0,2)."".substr($saida, 2,3);
 
                       $deletado_em = $cliente['deletado_em'];
                       $nivel_acesso = $cliente['nivel_acesso'];
@@ -141,14 +132,18 @@ if (!$_SESSION['matricula']) {
                           echo "<th scope='row'>".$deletado_em."</th>";
                           echo "<th scope='row'>
                           
-                          
-                            <a href='#'> <img src='dist/img/editar.png' alt='Apagar' style='width: 15px;'></a>
-                            <a href='#'> <img src='dist/img/lixo.png' alt='Apagar' style='width: 15px;'></a>
-                            <a href='#'> <img src='dist/img/olho.png' alt='Apagar' style='width: 17px;'></a>
-                            <input type='hidden'  value=".$id_parceiro." name='acao'>
+
+                            <form action='php/delete.php' method='POST'>
+                              <input type='hidden' name='matricula' value='$matricula'>
+                              <input type='submit' name='apagar' value='Apagar'>   
+                            </form><br>
+
+                            <form action='php/ver_colaborador.php' method='post'>
+                              <input type='hidden'  value=".$matricula ." name='matricul'>
+                              <input type='submit' name='ver' value='ver cliente'>
+                            </form>
                          
                       
-                          </form>
                           </th>";
                       echo "</tr>";                    
                     }
@@ -212,12 +207,16 @@ if (!$_SESSION['matricula']) {
                         <label for="exampleInputBirth">Saída</label>
                         <input type="time" class="form-control" id="exampleInputBirth" value="<?php echo date('H:i')?>" name="h_saida">
                       </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputBirth">Cargo</label>
+                        <input type="number" class="form-control" id="exampleInputBirth"  name="nivel_acesso" placeholder="Cargo">
+                      </div>
                     </div>
 
                     <input type="hidden" name="data_criacao" value="<?php date('d-m-Y')?>">
                     <input type="hidden" name="data_atualizacao" value="<?php date('d-m-Y')?>">
                     <input type="hidden" name="senha" value="1234">
-                    <input type="hidden" name="nivel_acesso" value="0">
 
                     <div class="box-footer">
                           <input type="submit" name="cadastrar" class="btn btn-success" value="Cadastrar" >
@@ -228,14 +227,9 @@ if (!$_SESSION['matricula']) {
             </div>
           </div>
         </div>
-
       </section>
-
     </diV>
-
-
-
-
+    
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
         <a target="_blank" href="https://github.com/Gundja">GundjaTech</a>

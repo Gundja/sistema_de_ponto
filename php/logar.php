@@ -1,12 +1,10 @@
 <?php
-
 session_start();
 
 include_once('db.php');
 
 $matricula = $_POST['matricula'];
 $senha = $_POST['senha'];
-
     $query = "SELECT * FROM colaborador WHERE matricula='$matricula' AND senha='$senha'";
     $result = $conn->query($query);
     $dados = mysqli_fetch_assoc($result);

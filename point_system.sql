@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Mar-2023 às 03:30
+-- Tempo de geração: 11-Mar-2023 às 05:30
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -31,8 +31,8 @@ CREATE TABLE `colaborador` (
   `id` int(11) NOT NULL,
   `nome` varchar(60) NOT NULL,
   `matricula` varchar(60) NOT NULL,
-  `entrada` int(60) NOT NULL,
-  `saida` int(60) NOT NULL,
+  `entrada` varchar(60) NOT NULL,
+  `saida` varchar(60) NOT NULL,
   `data_criacao` date NOT NULL,
   `data_atualizacao` date NOT NULL,
   `deletado_em` varchar(40) DEFAULT NULL,
@@ -45,10 +45,7 @@ CREATE TABLE `colaborador` (
 --
 
 INSERT INTO `colaborador` (`id`, `nome`, `matricula`, `entrada`, `saida`, `data_criacao`, `data_atualizacao`, `deletado_em`, `senha`, `nivel_acesso`) VALUES
-(2, 'casimiro gundja', '485578', 800, 1800, '2023-02-27', '2023-02-27', NULL, '1234', '1'),
-(3, 'Jose dos santos pison', '102030', 800, 1800, '2023-02-27', '2023-02-27', NULL, '1234', '0'),
-(4, 'Marta Luamba', '102031', 800, 1800, '2023-02-27', '2023-02-27', NULL, '1234', '0'),
-(7, 'José', '00180', 8, 18, '0000-00-00', '0000-00-00', NULL, '1234', '0');
+(2, 'casimiro gundja', '485578', '800', '1800', '2023-02-27', '2023-02-27', NULL, '1234', '1');
 
 -- --------------------------------------------------------
 
@@ -63,13 +60,6 @@ CREATE TABLE `ponto` (
   `data_marcacao` date NOT NULL,
   `ponto` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `ponto`
---
-
-INSERT INTO `ponto` (`id`, `fk_colaborador`, `tipo`, `data_marcacao`, `ponto`) VALUES
-(12, 102030, '0', '2023-03-04', NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -95,13 +85,13 @@ ALTER TABLE `ponto`
 -- AUTO_INCREMENT de tabela `colaborador`
 --
 ALTER TABLE `colaborador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `ponto`
 --
 ALTER TABLE `ponto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
